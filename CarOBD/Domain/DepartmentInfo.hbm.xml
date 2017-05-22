@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="DepartmentInfo" table="Sys_DepartmentInfo" lazy="true">
+    <cache usage="read-write"/>
+    <id name="ID" type="int" column="DepartmentInfoID">
+      <generator class="native" />
+    </id>
+
+    <!--部门名-->
+    <property name="DepartName" type="string">
+      <column name="DepartName" length="50" not-null="true"/>
+    </property>
+
+    <!--负责人-->
+    <property name="PersonName" type="string">
+      <column name="PersonName" length="50"/>
+    </property>
+
+    <!--联系电话-->
+    <property name="TelPhone" type="string">
+      <column name="TelPhone" length="50"/>
+    </property>
+
+    <!--地址-->
+    <property name="Address" type="string">
+      <column name="Address" length="200"/>
+    </property>
+
+    <!--系统标题-->
+    <property name="SystemTitle" type="string">
+      <column name="SystemTitle" length="200" not-null="true"/>
+    </property>
+
+    <!--建立时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+    
+  </class>
+
+</hibernate-mapping>

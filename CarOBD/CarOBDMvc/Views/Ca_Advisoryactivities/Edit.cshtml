@@ -1,0 +1,122 @@
+﻿@model Domain.Ca_Advisoryactivities
+<title>Edit</title>
+<link href="/easyui/demo/demo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" language="javascript">
+    function submitForm() {
+        var code = 0;
+
+        if ($("#ID").val() == code) {
+            jude();
+        }
+        else {
+            jude();
+        }
+    }
+
+
+    function jude() {
+
+        var parm = { activityname: $("#ActivityName").val() };
+
+        $.ajax({
+            type: "POST",
+            url: "/Ca_Advisoryactivities/Exist",
+            data: $.param(parm),
+            success: function (msg) {
+
+                if (msg.IsSuccess == "True") {
+
+                    $.messager.alert('提示', "请输入的活动名称已存在，请重新输入！");
+                }
+                else {
+                    post();
+                }
+            }
+        });
+    }
+
+    function post() {
+        $('#form1').form('submit', {
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (msg) {
+                $.messager.alert('提示', "保存成功", 'info', function () {
+                    window.location.href = "/Ca_Advisoryactivities/Index/";
+                });
+            }
+        });
+    }
+</script>
+<body>
+    <form id="form1" action="/Ca_Advisoryactivities/Save/" method="post">
+    <div class="easyui-panel" title="活动信息" style="width: auto" data-options="collapsible:true,border:true">
+        <div style="padding: 10px 0 10px 100px;">
+            <input style="width: 130px; display:none" class="easyui-validatebox" type="text"  value='@Model.ID' data-options="required:true"
+                   name="ID" id="ID" />
+            <table style="text-align: center; width: auto">
+                <tr>
+                    <td>
+                        活动名称:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.ActivityName' data-options="required:true"
+                               name="ActivityName" id="ActivityName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        联系电话:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.TelPhone' data-options="required:true" name="TelPhone" id="TelPhone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.Address' data-options="required:true" name="Address" id="Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        活动内容:
+                    </td>
+                    <td>
+                        <textarea  name="Context" rows="10" cols="20" id="Context" data-options="required:true"  class="easyui-validatebox" style="width:130px;resize: none">@Model.Context</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        开始日期:
+                    </td>
+                    <td>
+                        <input type="text" class="easyui-datebox" required="required" value='@Model.BeginTime' name="BeginTime" id="BeginTime"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        结束日期:
+                    </td>
+                    <td>
+                        <input type="text" class="easyui-datebox" required="required" value='@Model.EndTime' name="EndTime" id="EndTime"></input>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <span id="uploadify"></span>
+        <div style="text-align: center; padding: 5px 220px 10px 10px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" id="submit"
+                iconcls="icon-save">确定</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                    onclick="location.href = document.referrer;" iconcls="icon-cancel">返回</a>
+        </div>
+    </div>
+    </form>
+</body>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="MenuInfo" table="Sys_MenuInfo" lazy="true">
+    <cache usage="read-write"/>
+    <id name="MenuId" type="int" column="MenuId">
+      <generator class="native" />
+    </id>
+
+    <!--菜单名-->
+    <property name="MenuNames" type="string">
+      <column name="MenuNames" length="50" not-null="true"/>
+    </property>
+    
+    <!--图标-->
+    <property name="Icon" type="string">
+      <column name="Icon" length="50"/>
+    </property>
+    
+    <!--Url-->
+    <property name="Url" type="string">
+      <column name="Url" length="200" not-null="true"/>
+    </property>
+
+    <!--建立时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+
+    <!--<many-to-one name="ColumnmenuInfo" column="ColumnmenuInfoID"/>-->
+  
+  </class>
+
+</hibernate-mapping>

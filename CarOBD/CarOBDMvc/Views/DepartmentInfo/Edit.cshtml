@@ -1,0 +1,119 @@
+﻿@model Domain.DepartmentInfo
+           
+<title>Edit</title>
+<link href="/easyui/demo/demo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" language="javascript">
+    function submitForm() {
+        var code = 0;
+
+        if ($("#ID").val() == code) {
+            jude();
+        }
+        else {
+            jude();
+        }
+    }
+
+
+    function jude() {
+        
+        var parm = { departname: $("#DepartName").val(),systemTitle:$("#SystemTitle").val() };
+
+        $.ajax({
+            type: "POST",
+            url: "/DepartmentInfo/Exist",
+            data: $.param(parm),
+            success: function (msg) {
+
+                if (msg.IsSuccess == "True") {
+
+                    $.messager.alert('提示', "请输入的机构名称和系统标题已存在，请重新输入！");
+                }
+                else {
+                    post();
+                }
+            }
+        });
+    }
+
+    function post() {
+        $('#form1').form('submit', {
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (msg) {
+                $.messager.alert('提示', "保存成功", 'info', function () {
+                    window.location.href = "/DepartmentInfo/Index/";
+                });
+            }
+        });
+    }
+</script>
+<body>
+    <form id="form1" action="/DepartmentInfo/Save/" method="post">
+    <div class="easyui-panel" title="机构信息" style="width: auto" data-options="collapsible:true,border:true">
+        <div style="padding: 10px 0 10px 100px;">
+            <input style="width: 130px; display:none" class="easyui-validatebox" type="text"  value='@Model.ID' data-options="required:true"
+                   name="ID" id="ID" />
+            <table style="text-align: center; width: auto">
+                <tr>
+                    <td>
+                        机构名称:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.DepartName' data-options="required:true"
+                               name="DepartName" id="DepartName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        负责人:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.PersonName' name="PersonName" id="PersonName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        联系电话:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.TelPhone' 
+                               name="TelPhone" id="TelPhone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.Address' 
+                               name="Address" id="Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        系统标题:
+                    </td>
+                    <td>
+                        <input style="width: auto;" class="easyui-validatebox" type="text" value='@Model.SystemTitle' data-options="required:true"
+                               name="SystemTitle" id="SystemTitle" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <span id="uploadify"></span>
+        <div style="text-align: center; padding: 5px 220px 10px 10px">
+             <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" id="submit" iconcls="icon-save">
+                确定</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="location.href = document.referrer;" iconcls="icon-cancel">返回</a>
+           
+        </div>
+    </div>
+    </form>
+</body>

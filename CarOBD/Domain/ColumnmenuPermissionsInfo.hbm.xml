@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="ColumnmenuPermissionsInfo" table="Sys_ColumnmenuPermissionsInfo" lazy="true">
+    <cache usage="read-write"/>
+    <id name="ID" type="int">
+      <generator class="native"/>
+    </id>
+
+    <!--建立时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+
+    <many-to-one name="ColumnmenuInfo" column="ColumnmenuInfoID"/>
+
+
+    <many-to-one name="UserGroup" column="UserGroupID"/>
+
+
+
+  </class>
+
+</hibernate-mapping>

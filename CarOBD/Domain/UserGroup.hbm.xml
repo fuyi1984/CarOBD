@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="UserGroup" table="Sys_UserGroup" lazy="true">
+    <cache usage="read-write"/>
+    <id name="ID" type="int" column="UserGroupID">
+      <generator class="native" />
+    </id>
+
+    <!--用户组名-->
+    <property name="UserGroupName" type="string">
+      <column name="UserGroupName" length="50" not-null="true"/>
+    </property>
+
+    <!--建立时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+
+    <many-to-one name="DepartmentInfo" column="DepartmentInfoID"/>
+ 
+  </class>
+
+</hibernate-mapping>

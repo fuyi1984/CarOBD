@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="LogInfo" table="Sys_LogInfo" lazy="true">
+    <cache usage="read-write"/>
+    <id name="ID" type="int">
+      <generator class="native" />
+    </id>
+
+    <!--IP所在地址-->
+    <property name="IpAddress" type="string">
+      <column name="IpAddress" length="300" not-null="true"/>
+    </property>
+    
+    <!--登录IP-->
+    <property name="IpInfo" type="string">
+      <column name="IpInfo" length="50" not-null="true"/>
+    </property>
+
+    <!--账号-->
+    <property name="Account" type="string">
+      <column name="Account" length="50" not-null="true"/>
+    </property>
+    
+    <!--登录时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+
+  </class>
+
+</hibernate-mapping>

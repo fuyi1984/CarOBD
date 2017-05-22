@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <description>
+    Spring.NET Configuration For Service
+    Class Library : WcfSevice
+    Author        : Liudong
+    Create Date   : 2010-01-27
+  </description>
+
+  <object id="WcfServer" type="WcfSevice.Implement.Service,WcfSevice"/>
+
+</objects>

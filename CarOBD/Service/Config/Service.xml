@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object id="Manager.DepartmentInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.DepartmentInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.DepartmentInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.UserGroup" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.UserGroupManager, Service">
+        <property name="CurrentRepository" ref="Repository.UserGroup"/>
+      </object>
+    </property>
+  </object>
+
+
+  <object id="Manager.UserInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.UserInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.UserInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.ColumnmenuInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.ColumnmenuInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.ColumnmenuInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.ColumnmenuPermissionsInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.ColumnmenuPermissionsInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.ColumnmenuPermissionsInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.LogInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.LogInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.LogInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.MenuInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.MenuInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.MenuInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <object id="Manager.MenuPermissionsInfo" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.MenuPermissionsInfoManager, Service">
+        <property name="CurrentRepository" ref="Repository.MenuPermissionsInfo"/>
+      </object>
+    </property>
+  </object>
+
+  <!--图片上传-->
+  <object id="Manager.Photos" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.PhotosManager, Service">
+        <property name="CurrentRepository" ref="Repository.Photos"/>
+      </object>
+    </property>
+  </object>
+
+  <!--维修保养-->
+  <object id="Manager.Ca_Maintenance" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.Ca_MaintenanceManager, Service">
+        <property name="CurrentRepository" ref="Repository.Ca_Maintenance"/>
+      </object>
+    </property>
+  </object>
+
+  <!--年审服务-->
+  <object id="Manager.Ca_Verification" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.Ca_VerificationManager, Service">
+        <property name="CurrentRepository" ref="Repository.Ca_Verification"/>
+      </object>
+    </property>
+  </object>
+  
+  
+  <!-- 咨询活动 -->
+  <object id="Manager.Ca_Advisoryactivities" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.Ca_AdvisoryactivitiesManager, Service">
+        <property name="CurrentRepository" ref="Repository.Ca_Advisoryactivities"/>
+      </object>
+    </property>
+  </object>
+
+
+  
+  
+</objects>
+

@@ -1,0 +1,131 @@
+﻿<title>Index</title>
+<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $('#grid').datagrid({
+            title: '用户管理',
+            iconCls: 'icon-save',
+            nowrap: false,
+            striped: true,
+            url: '/UserInfo/LoadAllByPage/',
+            sortName: 'ID',
+            sortOrder: 'desc',
+            remoteSort: true,
+            fitColumns: true,
+            fit: true,
+            idField: 'ID',
+            //queryParams: { ID: @ViewData["entity"] },
+            frozenColumns: [[
+	                { field: 'ID', checkbox: true }
+				]],
+
+            columns: [[
+
+                    { field: 'Name', title: '姓名', width: 80, align: 'center' },
+                    { field: 'Account', title: '账号', width: 80, align: 'center' },
+                    { field: 'Password', title: '密码', width: 80, align: 'center',
+                        formatter: function (value, rec) {
+                            return "***********";
+                        }
+                    },
+                    { field: 'IsEnabled', title: '是否启用', width: 80, align: 'center',
+                        formatter: function (value, rec) {
+                            return value == true ? "正常" : "冻结"; ;
+                        }
+                    },
+                    { field: 'UserGroupName', title: '用户组', width: 80, align: 'center' },
+                    { field: 'DepartName', title: '所属机构', width: 80, align: 'center' },
+                    { field: 'CreateTime', title: '创建日期', width: 100, align: 'center',
+                        formatter: function (value, rec) {
+                            return eval("new " + value.substr(1, value.length - 2)).toLocaleDateString();
+                        }
+                    }
+
+
+                ]],
+            pagination: true,
+            rownumbers: true,
+            toolbar: ['-', {
+                id: 'btnSave',
+                text: '添加',
+                iconCls: 'icon-add',
+                handler: function () {
+                    this.href = '/UserInfo/Edit/';
+                }
+            }, '-', {
+                id: 'btnUpdate',
+                text: '修改',
+                iconCls: 'icon-save',
+                handler: function () {
+
+                    var row = $('#grid').datagrid('getSelected');
+                    if (row) {
+                        this.href = '/UserInfo/Edit/' + row.ID;
+                    }
+                    else {
+                        $.messager.alert('提示', '请选择要修改的数据');
+                        return;
+                    }
+
+                }
+            }, '-', {
+                id: 'btnDelete',
+                text: '删除',
+                disabled: false,
+                iconCls: 'icon-cut',
+                handler: function () {
+
+                    var rows = $('#grid').datagrid('getSelections');
+
+                    if (!rows || rows.length == 0) {
+                        $.messager.alert('提示', '请选择要删除的数据');
+                        return;
+                    }
+                    var parm;
+                    $.each(rows, function (i, n) {
+                        if (i == 0) {
+                            parm = "idList=" + n.ID;
+                        }
+                        else {
+                            parm += "&idList=" + n.ID;
+                        }
+                    });
+
+
+
+                    $.messager.confirm('提示', '是否删除这些数据?', function (r) {
+                        if (!r) {
+                            return;
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/UserInfo/Delete/",
+                            data: parm,
+                            success: function (msg) {
+                                if (msg.IsSuccess) {
+                                    $.messager.alert('提示', '删除成功！', "info", function () {
+                                        $('#grid').datagrid("reload");
+                                    });
+                                }
+                            },
+                            error: function () {
+                                $.messager.alert('错误', '删除失败！', "error");
+                            }
+                        });
+                    });
+                }
+            }, '-']
+        });
+    });
+</script>
+<body class="easyui-layout">
+    <div region="center" style="padding: 5px;" border="false">
+        <table id="grid">
+        </table>
+    </div>
+</body>

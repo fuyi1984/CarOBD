@@ -1,0 +1,7 @@
+E:\Project\Car\CarOBD\WebService\bin\Debug\WebService.dll
+E:\Project\Car\CarOBD\WebService\bin\Debug\WebService.pdb
+E:\Project\Car\CarOBD\WebService\obj\Debug\WebService.dll
+E:\Project\Car\CarOBD\WebService\obj\Debug\WebService.pdb
+E:\Project\Car\CarOBD\WebService\bin\Debug\Domain.dll
+E:\Project\Car\CarOBD\WebService\bin\Debug\Domain.pdb
+E:\Project\Car\CarOBD\WebService\obj\Debug\WebService.csprojResolveAssemblyReference.cache

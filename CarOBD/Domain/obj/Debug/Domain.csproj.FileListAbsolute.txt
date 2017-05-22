@@ -1,0 +1,9 @@
+E:\Project\CarOBD\Domain\bin\Debug\Domain.dll
+E:\Project\CarOBD\Domain\bin\Debug\Domain.pdb
+E:\Project\CarOBD\Domain\obj\Debug\Domain.dll
+E:\Project\CarOBD\Domain\obj\Debug\Domain.pdb
+E:\Project\Car\CarOBD\Domain\bin\Debug\Domain.dll
+E:\Project\Car\CarOBD\Domain\bin\Debug\Domain.pdb
+E:\Project\Car\CarOBD\Domain\obj\Debug\Domain.dll
+E:\Project\Car\CarOBD\Domain\obj\Debug\Domain.pdb
+E:\Project\Car\CarOBD\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

@@ -1,0 +1,109 @@
+﻿@using Domain
+@model Domain.UserGroup
+<title>Edit</title>
+<link href="/easyui/demo/demo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" language="javascript">
+    function submitForm() {
+        var code = 0;
+
+        if ($("#ID").val() == code) {
+
+            jude();
+        }
+        else {
+
+            jude();
+        }
+    }
+
+
+    function jude() {
+
+        if ($("#ID").val() == 0) {
+            var parm = { usergroupname: $("#UserGroupName").val() };
+
+            $.ajax({
+                type: "POST",
+                url: "/UserGroup/Exist",
+                data: $.param(parm),
+                success: function (msg) {
+
+                    if (msg.IsSuccess == "True") {
+
+                        $.messager.alert('提示', "请输入的用户组名已存在，请重新输入！");
+                    } else {
+                        post();
+                    }
+                }
+            });
+        } else {
+            post();
+        }
+    }
+
+    function post() {
+        $('#form1').form('submit', {
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (msg) {
+                $.messager.alert('提示', "保存成功", 'info', function () {
+                    window.location.href = "/UserGroup/Index/";
+                });
+            }
+        });
+    }
+</script>
+<body>
+    <form id="form1" action="/UserGroup/Save/" method="post">
+    <div class="easyui-panel" title="用户组信息" style="width: auto" data-options="collapsible:true,border:true">
+        <div style="padding: 10px 0 10px 100px;">
+            <input style="width: 130px; display:none" class="easyui-validatebox" type="text"  value='@Model.ID' data-options="required:true" name="ID" id="ID" />
+            <table style="text-align: center; width: auto">
+                <tr>
+                    <td>
+                        用户组名:
+                    </td>
+                    <td>
+                         <input style="width: 130px;"                  
+                                   class="easyui-validatebox" type="text" value='@Model.UserGroupName' data-options="required:true"
+                                   name="UserGroupName" id="UserGroupName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        机构名
+                    </td>
+                    <td>
+                        <select style="width: 130px;" class="easyui-combobox" name="DepartmentInfoID" id="DepartmentInfoID"
+                            data-options="required:true,editable:false">
+                            @foreach (DepartmentInfo item in ViewBag.Departments)
+                            {
+                                if (Model.DepartmentInfo.ID == item.ID)
+                                {
+                                <option value="@item.ID" selected="selected">@item.SystemTitle</option>
+                                }
+                                else
+                                {
+                                <option value="@item.ID">@item.SystemTitle</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                </tr>               
+            </table>
+        </div>
+        <span id="uploadify"></span>
+        <div style="text-align: center; padding: 5px 220px 10px 10px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" id="submit"
+                iconcls="icon-save">确定</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                    onclick="location.href = document.referrer;" iconcls="icon-cancel">返回</a>
+        </div>
+    </div>
+    </form>
+</body>

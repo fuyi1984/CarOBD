@@ -1,0 +1,127 @@
+﻿<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js" charset="utf-8"></script>
+<style type="text/css">
+    .textvalue
+    {
+        padding: 0;
+        width: 118px;
+        border-top: 1px solid #E2E2E2;
+        height: 25px;
+    }
+    .sub
+    {
+        height: 30px;
+        width: 120px;
+        position: relative;
+        top: 30px;
+    }
+</style>
+
+<body>
+    <div id="panel1" class="easyui-panel" title="图片上传" style="width: auto;" data-options="border:true,collapsible:true">
+        <div style="padding: 10px 0 10px 100px;">
+            @using (Html.BeginForm())
+            {
+                <div class="grid">
+                    <input type="file" class="g-u" id="J_UploaderBtn" value="上传图片" name="Filedata" />
+                    <input type="hidden" id="J_Urls" name="urls" value="" />
+                    <div class="g-u">
+                        还可以上传<span id="J_UploadCount">14</span>张图片</div>
+                </div>
+                <ul id="J_UploaderQueue" class="grid">
+                    <script type="text/uploader-theme">
+            <li id="queue-file-{id}" class="g-u" data-name="{name}" style="height: 140px !important"> 
+            <div class="pic"> 
+                <a href="javascript:void(0);"><img class="J_Pic_{id} preview-img" src="" /></a> 
+                </div> 
+            <div class=" J_Mask_{id} pic-mask"></div> 
+            <div class="status-wrapper"> 
+                <div class="status waiting-status"><p>等待上传，请稍候</p></div> 
+                <div class="status start-status progress-status success-status"> 
+                    <div class="J_ProgressBar_{id}"><s class="loading-icon"></s>上传中...</div> 
+                    </div> 
+                <div class="status error-status"> 
+                    <p class="J_ErrorMsg_{id}">上传失败，请重试！</p>
+                </div>
+            </div>
+            <a class="J_Del_{id} del-pic" href="#">删除</a>
+            <input type="text" value="" name="desc" id="desc" class="textvalue" placeholder="描述">
+            </li>
+                    </script>
+                </ul>
+                <input type="submit" value="保存" class="sub" />
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+    <script type="text/javascript">
+        var S = KISSY;
+        if (S.Config.debug) {
+            var srcPath = "../../../../";
+            S.config({
+                packages: [
+                    {
+                        name: "gallery",
+                        path: srcPath,
+                        charset: "utf-8"
+                    }
+                ]
+            });
+        }
+
+        var $ = S.Node.all;
+
+        S.use('gallery/uploader/1.4/index,gallery/uploader/1.4/themes/imageUploader/index,gallery/uploader/1.4/themes/imageUploader/style.css', function (S, Uploader, ImageUploader) {
+            //上传插件
+            var plugins = 'gallery/uploader/1.4/plugins/auth/auth,' +
+                'gallery/uploader/1.4/plugins/urlsInput/urlsInput,' +
+                'gallery/uploader/1.4/plugins/proBars/proBars,' +
+                'gallery/uploader/1.4/plugins/filedrop/filedrop,' +
+                'gallery/uploader/1.4/plugins/preview/preview';
+
+            S.use(plugins, function (S, Auth, UrlsInput, ProBars, Filedrop, Preview) {
+                var uploader = new Uploader('#J_UploaderBtn', {
+                    //处理上传的服务器端脚本路径
+                    action: "/Photos/PictureUpload",
+                    multiple: true
+                });
+                //上传成功后显示图片描述
+                uploader.on('success', function (ev) {
+                    var result = ev.file.result;
+                    if (result.desc) {
+                        var $desc = $('.J_Desc_' + ev.file.id);
+                        $desc.html(result.desc);
+                    }
+                });
+
+                //使用主题
+                uploader.theme(new ImageUploader({
+                    queueTarget: '#J_UploaderQueue'
+                }))
+                //验证插件
+                    .plug(new Auth({
+                        //最多上传个数
+                        max: 14,
+                        //图片最大允许大小
+                        maxSize: 2000
+                    }))
+                //url保存插件
+                    .plug(new UrlsInput({ target: '#J_Urls' }))
+                //进度条集合
+                    .plug(new ProBars())
+                //拖拽上传
+                    .plug(new Filedrop())
+                //图片预览
+                    .plug(new Preview());
+                //渲染默认数据
+                uploader.restore();
+            });
+        });
+
+    </script>
+</body>

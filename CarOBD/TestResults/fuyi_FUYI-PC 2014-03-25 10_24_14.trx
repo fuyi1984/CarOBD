@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c2249a87-4716-4754-b969-96540e4f7439" name="fuyi@FUYI-PC 2014-03-25 10:24:14" runUser="fuyi-PC\fuyi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="cc238bf4-9bcc-4af4-bef7-1f0e29b26f73">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment userDeploymentRoot="E:\Project\CarOBD\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="fuyi_FUYI-PC 2014-03-25 10_24_14">
+      <DeploymentItem filename="E:\Project\CarOBD\CarOBDMvc\bin\CarOBDMvc.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-03-25T10:24:14.6669733+08:00" queuing="2014-03-25T10:24:15.0729965+08:00" start="2014-03-25T10:24:15.1069984+08:00" finish="2014-03-25T10:24:15.8230394+08:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Index" storage="e:\project\carobd\carobdmvc.tests\bin\debug\carobdmvc.tests.dll" id="02c38399-2da3-7773-e4c2-1b735043bef7">
+      <Execution id="1919ee4f-dfc7-48a6-a36e-85816cdf0eb3" />
+      <TestMethod codeBase="E:/Project/CarOBD/CarOBDMvc.Tests/bin/Debug/CarOBDMvc.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CarOBDMvc.Tests.Controllers.HomeControllerTest, CarOBDMvc.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="02c38399-2da3-7773-e4c2-1b735043bef7" executionId="1919ee4f-dfc7-48a6-a36e-85816cdf0eb3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="1919ee4f-dfc7-48a6-a36e-85816cdf0eb3" testId="02c38399-2da3-7773-e4c2-1b735043bef7" testName="Index" computerName="FUYI-PC" duration="00:00:00.1287451" startTime="2014-03-25T10:24:15.1159989+08:00" endTime="2014-03-25T10:24:15.8020382+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1919ee4f-dfc7-48a6-a36e-85816cdf0eb3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual 失败。应为: &lt;欢迎使用 ASP.NET MVC!&gt;，实际为: &lt;(null)&gt;。</Message>
+          <StackTrace>   在 CallSite.Target(Closure , CallSite , Type , String , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   在 CarOBDMvc.Tests.Controllers.HomeControllerTest.Index() 位置 E:\Project\CarOBD\CarOBDMvc.Tests\Controllers\HomeControllerTest.cs:行号 25
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <!--创建web宿主的信道工厂-->
+  <object id="WebChannelFactory"
+      type="System.ServiceModel.ChannelFactory&lt;WcfSevice.IWcfContract>, System.ServiceModel">
+    <constructor-arg name="endpointConfigurationName" value="WSHttpBinding_IContract" />
+  </object>
+
+  <!--调用web宿主的代理类-->
+  <object id="WebProxy"
+        type="WcfSevice.IWcfContract, WcfSevice"
+        factory-object="WebChannelFactory"
+        factory-method="CreateChannel" singleton="false" />
+
+  <!--创建app宿主的信道工厂-->
+  <object id="AppChannelFactory"
+    type="System.ServiceModel.ChannelFactory&lt;WcfSevice.IWcfContract>, System.ServiceModel">
+    <constructor-arg name="endpointConfigurationName" value="NetTcpBinding_IContract" />
+  </object>
+
+  <!--调用app宿主的代理类-->
+  <object id="AppProxy"
+        type="WcfSevice.IWcfContract, WcfSevice"
+        factory-object="AppChannelFactory"
+        factory-method="CreateChannel"/>
+  
+</objects>
+
+  

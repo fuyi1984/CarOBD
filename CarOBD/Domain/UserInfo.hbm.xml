@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="UserInfo" table="Sys_UserInfo" lazy="true">
+    <cache usage="read-write"/>
+    <id name="ID" type="int" column="UserInfoID">
+       <generator class="native"/>
+    </id>
+
+    <!--名称-->
+    <property name="Name" type="string">
+      <column name="Name" length="50" not-null="true"/>
+    </property>
+
+    <!--账号-->
+    <property name="Account" type="string">
+      <column name="Account" length="50" not-null="true"/>
+    </property>
+
+    <!--密码-->
+    <property name="Password" type="string">
+      <column name="Password" length="32" not-null="true"/>
+    </property>
+
+    <!--启用-->
+    <property name="IsEnabled" type="bool">
+      <column name="IsEnabled" not-null="true"/>
+    </property>
+
+    <!--建立时间-->
+    <property name="CreateTime" type="DateTime">
+      <column name="CreateTime" not-null="true"/>
+    </property>
+
+    
+    <many-to-one name="UserGroup" column="UserGroupID"/>
+    
+
+    
+  </class>
+
+</hibernate-mapping>

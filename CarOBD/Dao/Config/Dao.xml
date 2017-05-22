@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+
+  <object id="Repository.UserInfo" type="Dao.Implement.UserInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.DepartmentInfo" type="Dao.Implement.DepartmentInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.UserGroup" type="Dao.Implement.UserGroupRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.ColumnmenuInfo" type="Dao.Implement.ColumnmenuInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.ColumnmenuPermissionsInfo" type="Dao.Implement.ColumnmenuPermissionsInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.LogInfo" type="Dao.Implement.LogInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.MenuInfo" type="Dao.Implement.MenuInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="Repository.MenuPermissionsInfo" type="Dao.Implement.MenuPermissionsInfoRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!-- 图片上传-->
+  <object id="Repository.Photos" type="Dao.Implement.PhotosRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!--长安车维修保养-->
+  <object id="Repository.Ca_Maintenance" type="Dao.Implement.Ca_MaintenanceRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!--长安车年审服务-->
+  <object id="Repository.Ca_Verification" type="Dao.Implement.Ca_VerificationRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!-- 咨询活动 -->
+  <object id="Repository.Ca_Advisoryactivities" type="Dao.Implement.Ca_AdvisoryactivitiesRepository,Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+
+</objects>

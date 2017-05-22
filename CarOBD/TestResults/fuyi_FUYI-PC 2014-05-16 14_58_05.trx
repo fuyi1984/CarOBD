@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d000e094-946d-418b-8b1e-89d0fd57429d" name="fuyi@FUYI-PC 2014-05-16 14:58:05" runUser="fuyi-PC\fuyi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="cc238bf4-9bcc-4af4-bef7-1f0e29b26f73">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment enabled="false" runDeploymentRoot="fuyi_FUYI-PC 2014-05-16 14_58_05">
+      <DeploymentItem filename="E:\Project\Car\CarOBD\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll" />
+      <DeploymentItem filename="E:\Project\Car\CarOBD\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll" />
+      <DeploymentItem filename="E:\Project\Car\CarOBD\Domain\bin\Debug\Domain.dll" />
+      <DeploymentItem filename="E:\Project\Car\CarOBD\lib\NHibernate\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="E:\Project\Car\CarOBD\Common\bin\Debug\Common.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-05-16T14:58:05.5210131+08:00" queuing="2014-05-16T14:58:09.0122128+08:00" start="2014-05-16T14:58:10.5423003+08:00" finish="2014-05-16T14:58:13.9304941+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestDesEncrypt" storage="e:\project\car\carobd\testcarobd\bin\debug\testcarobd.dll" id="1d149961-e006-9b54-8af8-c3eed9f475ca">
+      <Execution id="3da90936-8eb6-4a4b-a4ad-1a54fe4bab9e" />
+      <TestMethod codeBase="E:/Project/Car/CarOBD/TestCarOBD/bin/Debug/TestCarOBD.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestCarOBD.UserInfoTest, TestCarOBD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestDesEncrypt" />
+    </UnitTest>
+    <UnitTest name="TestDesDecrypt" storage="e:\project\car\carobd\testcarobd\bin\debug\testcarobd.dll" id="a95bc05f-04a5-ca4c-0a25-dc552d88b80c">
+      <Execution id="53a54266-2fca-4d58-a4c2-8002d0c893bb" />
+      <TestMethod codeBase="E:/Project/Car/CarOBD/TestCarOBD/bin/Debug/TestCarOBD.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestCarOBD.UserInfoTest, TestCarOBD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestDesDecrypt" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="1d149961-e006-9b54-8af8-c3eed9f475ca" executionId="3da90936-8eb6-4a4b-a4ad-1a54fe4bab9e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a95bc05f-04a5-ca4c-0a25-dc552d88b80c" executionId="53a54266-2fca-4d58-a4c2-8002d0c893bb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3da90936-8eb6-4a4b-a4ad-1a54fe4bab9e" testId="1d149961-e006-9b54-8af8-c3eed9f475ca" testName="TestDesEncrypt" computerName="FUYI-PC" duration="00:00:00.0931991" startTime="2014-05-16T14:58:11.1823369+08:00" endTime="2014-05-16T14:58:13.8224879+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3da90936-8eb6-4a4b-a4ad-1a54fe4bab9e">
+      <Output>
+        <StdOut>MygXE0eCwa4=</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="53a54266-2fca-4d58-a4c2-8002d0c893bb" testId="a95bc05f-04a5-ca4c-0a25-dc552d88b80c" testName="TestDesDecrypt" computerName="FUYI-PC" duration="00:00:00.0040250" startTime="2014-05-16T14:58:13.8464893+08:00" endTime="2014-05-16T14:58:13.8664904+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="53a54266-2fca-4d58-a4c2-8002d0c893bb">
+    </UnitTestResult>
+  </Results>
+</TestRun>

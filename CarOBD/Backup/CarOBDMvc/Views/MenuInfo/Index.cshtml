@@ -1,0 +1,107 @@
+﻿<title>Index</title>
+<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $('#grid').datagrid({
+            title: '菜单分配',
+            iconCls: 'icon-save',
+            nowrap: false,
+            striped: true,
+            url: '/MenuInfo/LoadAllByPage/',
+            sortName: 'MenuId',
+            sortOrder: 'desc',
+            remoteSort: true,
+            fitColumns: true,
+            fit: true,
+            idField: 'MenuId',
+            //queryParams: { ID: @ViewData["entity"] },
+            frozenColumns: [[
+	                { field: 'MenuId', checkbox: true }
+				]],
+
+            columns: [[
+
+                    { field: 'MenuNames', title: '菜单名', width: 80, align: 'center' },
+                    { field: 'Icon', title: '图标', width: 80, align: 'center' },
+                    { field: 'Url', title: '路由地址', width: 80, align: 'center' },
+                    { field: 'MenuName', title: '栏目名', width: 80, align: 'center' },
+                    { field: 'CreateTime', title: '创建日期', width: 100, align: 'center',
+                        formatter: function (value, rec) {
+                            return eval("new " + value.substr(1, value.length - 2)).toLocaleDateString();
+                        }
+                    }
+
+
+                ]],
+            pagination: true,
+            rownumbers: true,
+            toolbar: [ '-', {
+                id: 'btnfeiPei',
+                text: '分配',
+                iconCls: 'icon-save',
+                handler: function () {
+
+                    this.href = '/MenuInfo/FeiPei/';
+
+                }
+            }, '-', {
+                id: 'btnDelete',
+                text: '删除',
+                disabled: false,
+                iconCls: 'icon-cut',
+                handler: function () {
+
+                    var rows = $('#grid').datagrid('getSelections');
+
+                    if (!rows || rows.length == 0) {
+                        $.messager.alert('提示', '请选择要删除的数据');
+                        return;
+                    }
+                    var parm;
+                    $.each(rows, function (i, n) {
+                        if (i == 0) {
+                            parm = "idList=" + n.MenuId;
+                        }
+                        else {
+                            parm += "&idList=" + n.MenuId;
+                        }
+                    });
+
+
+
+                    $.messager.confirm('提示', '是否删除这些数据?', function (r) {
+                        if (!r) {
+                            return;
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/MenuInfo/Delete/",
+                            data: parm,
+                            success: function (msg) {
+                                if (msg.IsSuccess) {
+                                    $.messager.alert('提示', '删除成功！', "info", function () {
+                                        $('#grid').datagrid("reload");
+                                    });
+                                }
+                            },
+                            error: function () {
+                                $.messager.alert('错误', '删除失败！', "error");
+                            }
+                        });
+                    });
+                }
+            }, '-']
+        });
+    });
+</script>
+<body class="easyui-layout">
+    <div region="center" style="padding: 5px;" border="false">
+        <table id="grid">
+        </table>
+    </div>
+</body>

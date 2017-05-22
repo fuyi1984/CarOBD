@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object type="CarOBDMvc.Controllers.HomeController, CarOBDMvc" singleton="false" >
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+    <property name="ColumnmenuPermissionsInfoManager" ref="Manager.ColumnmenuPermissionsInfo"/>
+    <property name="MenuPermissionsInfoManager" ref="Manager.MenuPermissionsInfo"/>
+    <property name="ColumnmenuInfoManager" ref="Manager.ColumnmenuInfo"/>
+    <property name="MenuInfoManager" ref="Manager.MenuInfo"/>
+    <property name="LogInfoManager" ref="Manager.LogInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.DepartmentInfoController, CarOBDMvc" singleton="false" >
+    <property name="DepartmentInfoManager" ref="Manager.DepartmentInfo"/>
+    <property name="UserGroupManager" ref="Manager.UserGroup"/>
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+    <property name="MenuPermissionsInfoManager" ref="Manager.MenuPermissionsInfo"/>
+    <property name="ColumnmenuPermissionsInfoManager" ref="Manager.ColumnmenuPermissionsInfo"/>
+  </object>
+
+  
+  <object type="CarOBDMvc.Controllers.UserInfoController, CarOBDMvc" singleton="false" >
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+    <property name="DepartmentInfoManager" ref="Manager.DepartmentInfo"/>
+    <property name="UserGroupManager" ref="Manager.UserGroup"/>
+  </object>
+
+ 
+
+  <object type="CarOBDMvc.Controllers.LogInfoController, CarOBDMvc" singleton="false" >
+    <property name="LogInfoManager" ref="Manager.LogInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.UserGroupController, CarOBDMvc" singleton="false" >
+    <property name="UserGroupManager" ref="Manager.UserGroup"/>
+    <property name="DepartmentInfoManager" ref="Manager.DepartmentInfo"/>
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+    <property name="MenuPermissionsInfoManager" ref="Manager.MenuPermissionsInfo"/>
+    <property name="ColumnmenuPermissionsInfoManager" ref="Manager.ColumnmenuPermissionsInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.ColumnmenuInfoController, CarOBDMvc" singleton="false" >
+    <property name="ColumnmenuInfoManager" ref="Manager.ColumnmenuInfo"/>
+    <property name="ColumnmenuPermissionsInfoManager" ref="Manager.ColumnmenuPermissionsInfo"/>
+    <property name="MenuInfoManager" ref="Manager.MenuInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.MenuInfoController, CarOBDMvc" singleton="false" >
+    <property name="ColumnmenuInfoManager" ref="Manager.ColumnmenuInfo"/>
+    <property name="MenuInfoManager" ref="Manager.MenuInfo"/>
+    <property name="MenuPermissionsInfoManager" ref="Manager.MenuPermissionsInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.ColumnmenuPermissionsInfoController, CarOBDMvc" singleton="false" >
+    <property name="ColumnmenuPermissionsInfoManager" ref="Manager.ColumnmenuPermissionsInfo"/>
+    <property name="ColumnmenuInfoManager" ref="Manager.ColumnmenuInfo"/>
+    <property name="UserGroupManager" ref="Manager.UserGroup"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.MenuPermissionsInfoController, CarOBDMvc" singleton="false" >
+    <property name="MenuPermissionsInfoManager" ref="Manager.MenuPermissionsInfo"/>
+    <property name="UserGroupManager" ref="Manager.UserGroup"/>
+    <property name="MenuInfoManager" ref="Manager.MenuInfo"/>
+  </object>
+
+  <object type="CarOBDMvc.Controllers.PhotosController, CarOBDMvc" singleton="false" >
+    <property name="PhotosManager" ref="Manager.Photos"/>
+  </object>
+  
+  <!-- 维修保养 -->
+  <object type="CarOBDMvc.Controllers.Ca_MaintenanceController, CarOBDMvc" singleton="false" >
+    <property name="Ca_MaintenanceManager" ref="Manager.Ca_Maintenance"/>
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+  </object>
+
+  <!-- 年审服务 -->
+  <object type="CarOBDMvc.Controllers.Ca_VerificationController, CarOBDMvc" singleton="false" >
+    <property name="Ca_VerificationManager" ref="Manager.Ca_Verification"/>
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+  </object>
+
+  <!-- 咨询活动 -->
+  <object type="CarOBDMvc.Controllers.Ca_AdvisoryactivitiesController, CarOBDMvc" singleton="false" >
+    <property name="Ca_AdvisoryactivitiesManager" ref="Manager.Ca_Advisoryactivities"/>
+    <property name="UserInfoManager" ref="Manager.UserInfo"/>
+  </object>
+  
+</objects>
